@@ -5,11 +5,14 @@
   --primary-white-color: #ffffff;
   --primary-black-color: #000000;
   --team-bg-color: #f5f4fa;
+  --duty-title-bg-color:rgba(47, 48, 58, 0.8);
   --footer-bg-color: #2f303a;
   --footer-link-color: rgba(255, 255, 255, 0.6);
   --selection-color-hero-btn: #188ce8;
   --border-header-line: #ececec;
   --border-portfolio-card: #eeeeee;
+  --duration:250ms;
+  --timing-function:cubic-bezier(0.4, 0, 0.2, 1);
 }
 p,
 h1,
@@ -34,6 +37,7 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
+  object-fit: cover;
 }
 
 body {
@@ -67,7 +71,6 @@ body {
   font-weight: 700;
   line-height: 1.17;
   text-align: center;
-
   margin-bottom: 50px;
 }
 .container {
@@ -82,7 +85,6 @@ body {
 .header {
   border-bottom: 1px solid var(--border-header-line);
 }
-
 .header-container {
   display: flex;
   align-items: center;
@@ -104,18 +106,25 @@ body {
 .contact-item:not(:last-child) {
   margin-right: 50px;
 }
-
+.nav-link.current::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height:4px;
+  background-color: var(--accent-color);
+  border-radius: 2px;
+}
 /* ------------------Logo----------------- */
 
 .logo {
   padding: 24px 0;
   margin-right: 93px;
-
   font-family: 'Raleway', sans-serif;
   font-size: 26px;
   font-weight: 700;
   line-height: 1.19;
-
   color: var(--accent-color);
 }
 .logo-header {
@@ -128,6 +137,7 @@ body {
   margin: 0 0 20px 0;
   padding: 0;
 }
+
 /* ------------------Links---------------- */
 
 .nav-link,
@@ -137,10 +147,11 @@ body {
   line-height: 1.14;
   letter-spacing: 0.02em;
   color: var(--main-text-color);
-
   padding: 32px 0;
+  transition: color var(--duration) var(--timing-function);
 }
 .nav-link {
+  position: relative;
   color: var(--main-text-color);
 }
 .contact-link {
@@ -154,9 +165,11 @@ body {
  }
 .footer-link {
   color: var(--footer-link-color);
+  transition: color var(--duration) var(--timing-function);
 }
 .project-link {
   color: var(--main-text-color);
+  transition: box-shadow var(--duration) var(--timing-function);;
 }
 .nav-link:hover,
 .nav-link:focus,
@@ -190,9 +203,7 @@ body {
   text-align: center;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-
   color: var(--primary-white-color);
-
   max-width: 696px;
   margin: 0 auto;
   margin-bottom: 30px;
@@ -204,21 +215,19 @@ body {
   line-height: 1.87;
   text-align: center;
   letter-spacing: 0.06em;
-  /* cursor: pointer; */
-
   color: var(--primary-white-color);
   background-color: var(--accent-color);
-
   border: none;
   border-radius: 4px;
   min-width: 200px;
   padding: 10px 32px;
   margin: auto;
+  transition: color var(--duration) var(--timing-function),background-color var(--duration) var(--timing-function);
 }
 .hero-button:focus,
 .hero-button:hover {
-  background-color: var(--selection-color-hero-btn);
   color: var(--primary-white-color);
+  background-color: var(--selection-color-hero-btn);
 }
 
 /* ----------------Features---------------*/
@@ -228,17 +237,12 @@ body {
   font-weight: 700;
   line-height: 1.14;
   text-transform: uppercase;
-/* 
-  max-width: 270px; */
   margin-bottom: 10px;
 }
 .feature-text {
   font-size: 14px;
   line-height: 1.71;
-
   color: var(--secondary-text-color);
-
-  /* max-width: 270px; */
 }
 .features-list {
   display: flex;
@@ -265,6 +269,25 @@ body {
 .duties {
   padding: 0 0 94px 0;
 }
+.duty-item {
+  position: relative;
+}
+.duty-title {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.14;
+  text-transform: uppercase;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-white-color);
+  background-color:var(--duty-title-bg-color);
+   }
 .team {
   background-color: var(--team-bg-color);
 }
@@ -280,17 +303,15 @@ body {
   font-size: 16px;
   line-height: 1.19;
   text-align: center;
-
   color: var(--secondary-text-color);
-
   margin-bottom: 16px;
 }
-.duties-list,
+.duty-list,
 .team-list {
   display: flex;
 }
 .team-item:not(:last-child),
-.duties-item:not(:last-child) {
+.duty-item:not(:last-child) {
   margin-right: 30px;
 }
 .team-item {
@@ -323,11 +344,12 @@ body {
   justify-content: center;
   background: var(--primary-white-color);
   color: #afb1b8;
+  transition: color var(--duration) var(--timing-function), background-color var(--duration) var(--timing-function);
 }
 .social-link:hover,
 .social-link:focus {
-  background-color:var(--accent-color);
   color: var(--primary-white-color);
+  background-color:var(--accent-color);
 }
 .social-icon {
   fill: currentColor;
@@ -355,11 +377,12 @@ body {
   justify-content: center;
   background: var(--primary-white-color);
   color: #afb1b8;
+  transition: color var(--duration) var(--timing-function), border-color var(--duration) var(--timing-function);
 }
 .customer-link:hover,
 .customer-link:focus {
-  border-color: var(--accent-color);
   color: var(--accent-color);
+  border-color: var(--accent-color);
 }
 .customer-icon {
   fill: currentColor;
@@ -385,17 +408,13 @@ body {
   font-weight: 700;
   line-height: 1.14;
   text-transform: uppercase;
-  
   color: var(--primary-white-color);
-
   margin-bottom: 20px;
-
 }
 .address-item {
   font-style: normal;
   font-size: 14px;
   line-height: 1.71;
-
   color: var(--primary-white-color);
 }
 .address-item:not(:last-child) {
@@ -421,12 +440,11 @@ body {
   font-size: 16px;
   font-weight: 500;
   line-height: 1.62;
-  
   background-color: var(--team-bg-color);
-
   border: none;
   border-radius: 4px;
   padding: 6px 22px;
+  transition: color var(--duration) var(--timing-function),background-color var(--duration) var(--timing-function),box-shadow var(--duration) var(--timing-function);
 }
 
 .filter-button:hover,
@@ -434,7 +452,6 @@ body {
 .filter-button.active {
   color: var(--primary-white-color);
   background-color: var(--accent-color);
-
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
   border-radius: 4px;
@@ -453,7 +470,6 @@ body {
 }
 .project-description {
   padding: 20px 24px;
-
   border-right: 1px solid var(--border-portfolio-card);
   border-bottom: 1px solid var(--border-portfolio-card);
   border-left: 1px solid var(--border-portfolio-card);
@@ -463,13 +479,11 @@ body {
   font-weight: 700;
   line-height: 2;
   letter-spacing: 0.06em;
-
   margin-bottom: 4px;
 }
 .project-text {
   font-size: 16px;
   line-height: 1.87;
-
   color: var(--secondary-text-color);
 }
 .project-link:hover,
