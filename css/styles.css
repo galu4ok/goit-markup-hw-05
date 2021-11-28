@@ -12,6 +12,7 @@
   --border-header-line: #ececec;
   --border-portfolio-card: #eeeeee;
   --portfolio-card-bg-overlay:rgba(33, 150, 243, 0.9);
+  --backdrop-bg-color:rgba(0, 0, 0, 0.2);
   --duration:250ms;
   --timing-function:cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -84,6 +85,12 @@ body {
 }
 /* -------------------Header-------------- */
 .header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: var(--primary-white-color);
   border-bottom: 1px solid var(--border-header-line);
 }
 .header-container {
@@ -170,7 +177,7 @@ body {
 }
 .project-link {
   color: var(--main-text-color);
-  transition: box-shadow var(--duration) var(--timing-function);;
+  transition: box-shadow var(--duration) var(--timing-function);
 }
 .nav-link:hover,
 .nav-link:focus,
@@ -288,7 +295,7 @@ body {
   justify-content: center;
   color: var(--primary-white-color);
   background-color:var(--duty-title-bg-color);
-   }
+}
 .team {
   background-color: var(--team-bg-color);
 }
@@ -517,4 +524,67 @@ transform: translateY(0);
   color: var(--primary-white-color);
   
   padding: 63px 24px;
+}
+
+/* -----------Modal window------------- */
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 100vw;
+  height: 100vh;
+  background-color:var(--backdrop-bg-color);
+  opacity: 1;
+  transition: opacity var(--duration) var(--timing-function), visibility var(--duration) var(--timing-function);
+}
+.backdrop.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+/* .backdrop.is-hidden.modal {
+  transform: scale(1.5) rotate(60deg) translate(-50%, -50%);
+} */
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* transform: translate(-50%, -50%); */
+  min-width: 528px;
+  min-height: 581px;
+  background-color: var(--primary-white-color);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  opacity: 1;
+  transform: scale(1) translate(-50%, -50%);
+  transition: opacity var(--duration) var(--timing-function), transform var(--duration) var(--timing-function);
+}
+.modal.is-hidden {
+  opacity: 0;
+  transform: scale(0.5) translate(-50%, -50%);
+}
+.modal-close-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--duration) var(--timing-function), border var(--duration) var(--timing-function),background-color var(--duration) var(--timing-function);
+}  
+.modal-close-button:hover,
+.modal-close-button:focus {
+  color:var(--accent-color);
+  border: 1px solid var(--accent-color);
+  background-color: var(--backdrop-bg-color);
+}
+.icon-close {
+  fill: currentColor;
 }
