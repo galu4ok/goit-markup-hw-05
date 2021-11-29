@@ -45,7 +45,7 @@ img {
 body {
   font-family: 'Roboto', sans-serif;
   letter-spacing: 0.03em;
-
+  padding-top: 80px;
   background-color: var(--primary-white-color);
   color: var(--main-text-color);
 }
@@ -166,11 +166,11 @@ body {
   color: var(--secondary-text-color);
   display: flex;
   align-items: center;
- }
+}
 .contact-icon{
   margin-right: 10px;
   fill:currentColor;
- }
+}
 .footer-link {
   color: var(--footer-link-color);
   transition: color var(--duration) var(--timing-function);
@@ -304,7 +304,6 @@ body {
   font-weight: 500;
   line-height: 1.19;
   text-align: center;
-
   margin-bottom: 10px;
 }
 .team-position {
@@ -330,7 +329,7 @@ body {
   width: 368px;
 }
 .team-description {
-  padding: 30px 0;
+  padding: 30px 32px;
 }
 .social-list {
   display: flex;
@@ -350,10 +349,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--primary-white-color);
+  background-color: var(--primary-white-color);
   color: #afb1b8;
-  transition: color var(--duration) var(--timing-function), background-color var(--duration) var(--timing-function);
+  transition: color var(--duration) var(--timing-function),background-color var(--duration) var(--timing-function);
 }
+
 .social-link:hover,
 .social-link:focus {
   color: var(--primary-white-color);
@@ -383,7 +383,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--primary-white-color);
+  background-color: var(--primary-white-color);
   color: #afb1b8;
   transition: color var(--duration) var(--timing-function), border-color var(--duration) var(--timing-function);
 }
@@ -429,8 +429,9 @@ body {
   margin-bottom: 9px;
 }
 .social-link-footer {
-  background: rgba(255, 255, 255, 0.1);;
+  background-color: rgba(255, 255, 255, 0.1);;
   color: var(--primary-white-color) ;
+  transition: background-color var(--duration) var(--timing-function);
 }
 
 /* ----------Portfolio filter buttons----- */
